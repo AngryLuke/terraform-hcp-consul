@@ -1,6 +1,6 @@
 # terraform-hcp-consul
 This is a simple repo where you can find the basics to deploy a HCP Consul cluster using Terraform.
-AWS is the cloud where everything is going to be deployed.
+AWS is the reference cloud where everything is going to be deployed.
 
 ## Tech Preconditions
 * Lastest Terraform binary, available on your env PATH [here](https://developer.hashicorp.com/terraform/downloads)
@@ -17,7 +17,7 @@ export HCP_CLIENT_SECRET=<the key generated>
 ```
 2. fecth from HCP portal the hvn-id (name of hvn created)
 
-Following you can find all the mandatory variables needed to deploy the HCP Consul cluster
+Below you can find all the mandatory variables needed to deploy the HCP Consul cluster
 * min_consul_version (use this variable to change the min Consul version)
 * hcp_tier (available values are: development, standard, plus)
     * read [here](https://cloud.hashicorp.com/products/consul/pricing) for all valid options
@@ -27,12 +27,12 @@ Following you can find all the mandatory variables needed to deploy the HCP Cons
 * hcp_consul_cluster (the name of the HCP Consul cluster)
 * hvn_id (name of hvn already created)
 
-Put all this values into a file <name>.tfvars and execute the provisioning process:
+Put all this values into a <name>.tfvars finle and let terraform to provision all the objects:
 ```
 terraform apply -var-file="<name>.tfvars"
 ```
 
-At the end of the provisioning process you'll be able to read from the output:
+At the end of the process you'll be able to read from the output the following urls:
 * public endpoint (if you had set to true enable_public_endpoint)
 * private endpoint
 
