@@ -28,7 +28,9 @@ Following you can find all the mandatory variables needed to deploy the HCP Cons
 * hvn_id (name of hvn already created)
 
 Put all this values into a file <name>.tfvars and execute the provisioning process:
+```
 terraform apply -var-file="<name>.tfvars"
+```
 
 At the end of the provisioning process you'll be able to read from the output:
 * public endpoint (if you had set to true enable_public_endpoint)
