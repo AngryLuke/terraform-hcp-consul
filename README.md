@@ -10,7 +10,7 @@ AWS is the reference cloud where everything is going to be deployed.
 
 ## How to run the project
 Before launch the terraform project please check you already did the following steps:
-1. export on the environment HCP client id and secrect
+1. export in the environment HCP client id and secrect
 ```
 export HCP_CLIENT_ID=<your client id>
 export HCP_CLIENT_SECRET=<the key generated>
