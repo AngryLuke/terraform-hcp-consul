@@ -34,6 +34,16 @@ variable "hcp_consul_cluster" {
   }
 }
 
+variable "eks_cluster_name" {
+  description = "Name of EKS cluster you want to use (already created)"
+  default     = ""
+}
+
+variable "eks_cluster_endpoint" {
+  description = "EKS kubernetes FQDN API"
+  default     = ""
+}
+
 variable "hvn_id" {
   description = "Name of HCP HVN you want to use"
   default     = ""

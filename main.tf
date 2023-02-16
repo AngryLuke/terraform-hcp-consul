@@ -17,6 +17,36 @@ resource "hcp_consul_cluster" "main" {
   size               = var.hcp_tier_size
 }
 
+# Fetch data for EKS cluster
+# 
+data "aws_eks_cluster_auth" "cluster" {
+  # Name of the cluster
+  name = var.eks_cluster_name
+}
+
+data "hcp_consul_agent_helm_config" "consul_helm" {
+  # ID of the HCP Consul cluster
+  cluster_id = var.hcp_consul_cluster
+  # kubernetes FQDN API
+  kubernetes_endpoint = var.eks_cluster_endpoint
+
+  depends_on = [
+    hcp_consul_cluster.main
+  ]
+}
+
+data "hcp_consul_agent_kubernetes_secret" "consul_secrets" {
+  # ID of the HCP Consul cluster
+  cluster_id = var.hcp_consul_cluster
+
+  depends_on = [
+    hcp_consul_cluster.main,
+    data.aws_eks_cluster_auth.cluster
+  ]
+}
+#
+# End fetching data for EKS cluster
+
 data "hcp_consul_cluster" "main" {
   cluster_id = var.hcp_consul_cluster
 

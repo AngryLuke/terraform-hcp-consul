@@ -18,3 +18,22 @@ output "consul_config" {
 output "consul_ca" {
   value = base64decode(data.hcp_consul_cluster.main.consul_ca_file)
 }
+
+output "client_yaml" {
+  value = data.hcp_consul_agent_helm_config.consul_helm.config
+}
+
+output "manifest_k8s" {
+  value     = data.hcp_consul_agent_kubernetes_secret.consul_secrets.secret
+  sensitive = true
+}
+
+output "manifest_hcl" {
+  value = yamldecode(data.hcp_consul_agent_kubernetes_secret.consul_secrets.secret)
+  sensitive = true
+}
+
+output "manifest_bootstrap" {
+  value = yamldecode(hcp_consul_cluster_root_token.token.kubernetes_secret)
+  sensitive = true
+}
