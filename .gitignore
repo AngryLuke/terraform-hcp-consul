@@ -30,3 +30,6 @@ override.tf.json
 # example: *tfplan*
 *tfplan*
 *.out*
+
+# .terraform.lock.hcl
+.terraform.lock.hcl
